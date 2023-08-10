@@ -1,0 +1,51 @@
+body {
+  overflow: auto;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  color: #232b34;
+  font-size: 14px;
+  background-color: var(--grey-10);
+}
+html {
+  overflow-y: initial;
+}
+* {
+  font-family: "Nunito", sans-serif;
+}
+button:focus {
+  outline: none;
+}
+button {
+  cursor: pointer;
+}
+
+.el-message-box__btns button {
+  min-width: 86px;
+}
+
+@media (min-width: 576px) {
+  body {
+    max-width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    border-left: 1px solid var(--grey-30);
+    border-right: 1px solid var(--grey-30);
+  }
+}
+@media (min-width: 768px) {
+  body {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    max-width: 1140px;
+  }
+}
