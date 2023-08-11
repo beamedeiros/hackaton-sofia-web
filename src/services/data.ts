@@ -54,3 +54,5 @@ export const generateDescriptionWithAI = async ({ titulo, dataInicio, horario, l
     console.error('[ERROR]', error)
   }
 }
+
+// export const confirmEvent = async ()

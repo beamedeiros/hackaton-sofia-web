@@ -79,29 +79,13 @@ function maybe() {
       </div>
       <div class="confirm-container">
         <div class="detail-container">
-          <h4>Confirmar presença?</h4>
         </div>
         <div class="options">
           <s-button
-            label="Sim"
-            variant="success"
+            label="Editar"
             size="default"
-            @click="
-              () => {
-                $router.push('/note/formUser');
-              }
-            "
           />
-          <s-button
-            label="Talvez"
-            size="default"
-            @click="
-              () => {
-                maybe();
-              }
-            "
-          />
-          <s-button label="Não" variant="danger" size="default" />
+          <s-button label="Excluir" variant="danger" size="default" />
         </div>
       </div>
     </s-card>

@@ -6,6 +6,7 @@ import NoteView from '../views/Note/NoteView.vue'
 import ListNoteView from '../views/Note/ListNoteView.vue'
 import DetailsView from '../views/Note/DetailsView.vue'
 import FormUserView from '../views/Note/FormUserView.vue'
+import EventDetailsView from '../views/Event/EventDetailsView.vue'
 
 export default createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +32,7 @@ export default createRouter({
             component: NoteView,
         },
         {
-            path: '/note/teste',
+            path: '/note/details',
             name: 'detailsView',
             component: DetailsView,
         },
@@ -45,6 +46,12 @@ export default createRouter({
             name: 'formUserView',
             component: FormUserView,
         },
+        {
+            path: '/event/details',
+            name: 'EventDetailsView',
+            component: EventDetailsView,
+        },
+        
 
     ]
 })

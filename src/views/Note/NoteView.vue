@@ -82,7 +82,9 @@ function getPrimeiroAcesso() {
               :disciplina="'Rua Euclides Miragaia, Centro - São José dos Campos'"
               :hora-inicial="'08:00'"
               :hora-final="'17:30'"
-              @click="editEvent(event)"
+              @click="() => {
+                $router.push('/event')
+              }"
             />
           </div>
         </div>
@@ -93,13 +95,12 @@ function getPrimeiroAcesso() {
           <div class="turmas-container">
             <div class="h7">14/08/2023</div>
             <SCardTurma
-              :key="1"
+              :key="2"
               :turma="'Evento dia dos pais'"
               :disciplina="'Escola Liceu'"
-              :hora-inicial="'10:30'"
-              :hora-final="''"
+              :hora-inicial="'16:00'"
+              :hora-final="'17:00'"
               variant="secondary"
-              @click="editEvent(event)"
             />
           </div>
         </div>
@@ -107,9 +108,6 @@ function getPrimeiroAcesso() {
       <s-button-menu label="Ver todos os comunicados" variant="primary-green" @click="$router.push('/note/all')"/>
     </s-container>
   </div>
-  <!-- v-for="event in eventsInProgress.length > 0
-                ? nextEvents.slice(0, 3)
-                : nextEvents.slice(0, 4)" -->
 </template>
 <style scoped>
 .s-home-container {

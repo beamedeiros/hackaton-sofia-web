@@ -4,7 +4,7 @@ import imagemVazio from "../assets/vazioTudoCerto.svg";
 import SSwiperOnBoardEscolas from "../components/SSwiperOnBoardEscolas.vue";
 import { QuestionFilled } from '@element-plus/icons-vue'
 import { eventsData } from "../services/data";
-const events = ref({});
+const events = ref([1]);
 // TODO: enteder aqui, como fazer essa identificação
 // vindo da api
 const nextEvents = ref([1, 2]);
@@ -87,12 +87,14 @@ function getPrimeiroAcesso() {
           <div class="h7-link">Em andamento</div>
           <div class="turmas-container">
             <SCardTurma
-              :key="events.id"
-              :turma="events.titulo"
+              :key="1"
+              :turma="'Hachathon Sophia+byLayers'"
               :disciplina="'Rua Euclides Miragaia, Centro - São José dos Campos'"
-              :hora-inicial="events.horaInicio"
+              :hora-inicial="'08:00'"
               :hora-final="'17:30'"
-              @click="editEvent(event)"
+              @click="() => {
+                $router.push('/event/details')
+              }"
             />
           </div>
         </div>
@@ -103,13 +105,12 @@ function getPrimeiroAcesso() {
           <div class="turmas-container">
             <div class="h7">14/08/2023</div>
             <SCardTurma
-              :key="1"
+              :key="2"
               :turma="'Evento dia dos pais'"
               :disciplina="'Escola Liceu'"
-              :hora-inicial="'10:30'"
-              :hora-final="''"
+              :hora-inicial="'16:00'"
+              :hora-final="'17:00'"
               variant="secondary"
-              @click="editEvent(event)"
             />
           </div>
         </div>
