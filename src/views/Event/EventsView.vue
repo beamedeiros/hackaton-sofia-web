@@ -21,7 +21,7 @@ function editEvent(event) {
   <s-container>
       <!-- Página Vazia -->
       <SVazio
-        v-if="events.length == 0"
+        v-if="events.length === 0"
         :imagem="imagemVazio"
         titulo="Parece que você não tem nenhum evento"
       />

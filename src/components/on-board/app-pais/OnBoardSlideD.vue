@@ -27,7 +27,6 @@ import comunicado from "../../../assets/on-board/app-escolas/comunicado.svg";
 
 h2 {
   font-weight: 100;
-  padding: 0 16px;
 }
 
 span {

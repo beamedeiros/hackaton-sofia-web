@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import celular from '../../../assets/on-board/app-escolas/celular_evento.png'
+import celular from '../../../assets/on-board/app-pais/celular.png'
 
-const itens = ["Gerar um evento", "Criar um comunicado ", "Enviar para os responsáveis"]
+const itens = ["Visualizar os detalhes do evento", "Confirmar presença"]
 </script>
 
 <template>
   <div class="on-board-slide-c">
     <header>
       <div class="texto-imagem-container">
-        <div class="imagem-seta-container">
-          <h2>Tudo em um clique</h2>
-        </div>
+          <h2>Se programe para eventos</h2>
 
         <div class="h7">
-          Em “Criar Evento” é possível:
+          Em “Comunicados” é possível:
         </div>
         <OnBoardItem
           v-for="(item, index) in itens"
@@ -52,10 +50,6 @@ header {
   text-align: left;
   gap: 8px;
   margin-left: 48px;
-}
-
-.imagem-seta-container {
-  position: relative;
 }
 
 .imagem-seta {

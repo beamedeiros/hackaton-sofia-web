@@ -13,7 +13,6 @@ const form = reactive<Event>({});
 function createSuccessEvent(event: Event) {
   ElNotification({
     title: 'Evento Criado com Sucesso!',
-    message: 'porra',
     type: 'success',
   })
 

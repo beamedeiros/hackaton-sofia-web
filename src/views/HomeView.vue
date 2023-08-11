@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import imagemVazio from '../assets/vazioTudoCerto.svg'
-import { eventsData } from '../services/data'
+import imagemVazio from "../assets/vazioTudoCerto.svg";
+import SSwiperOnBoardEscolas from "../components/SSwiperOnBoardEscolas.vue";
+import { QuestionFilled } from '@element-plus/icons-vue'
+import { eventsData } from "../services/data";
 const events = ref({});
 // TODO: enteder aqui, como fazer essa identificação
 // vindo da api
 const nextEvents = ref([1, 2]);
-var onBoard = ref(false)
+const onBoard = ref(false);
 
 function editEvent(event: any) {
   console.log(event);
@@ -16,48 +18,53 @@ const futureEvents = [];
 
 onMounted(() => {
   const today = new Date();
-  if(today.getDay !== events.dataInicio) {
-    console.log('evento nao é hoje')
-    futureEvents.push(events)
+  if (today.getDay !== events.dataInicio) {
+    futureEvents.push(events);
   }
-  
-})
+});
 
-onMounted(()=>{
-  if(getPrimeiroAcesso() == null){
-    onBoard.value = true
-    setPrimeiroAcesso()
-  }else{
-    onBoard.value = false
+onMounted(() => {
+  if (getPrimeiroAcesso() == null) {
+    onBoard.value = true;
+    setPrimeiroAcesso();
+  } else {
+    onBoard.value = false;
   }
-})
+});
 
 function fecharOnBoard() {
-  onBoard.value = false
+  onBoard.value = false;
 }
 
 function setPrimeiroAcesso() {
   try {
-    window.localStorage.setItem('app_gestao_eventos', 'true')
+    window.localStorage.setItem("app_gestao_eventos", "true");
   } catch {
-    return false
+    return false;
   }
 }
 
 function getPrimeiroAcesso() {
   try {
-    return localStorage.getItem('app_gestao_eventos')
+    return localStorage.getItem("app_gestao_eventos");
   } catch {
-    return false
+    return false;
   }
 }
 </script>
 <template>
   <div>
-    <s-nav-bar v-if="!onBoard" titulo="Gestão de eventos" />
+    <s-nav-bar v-if="!onBoard" titulo="Gestão de eventos">
+      <template #itemDireito>
+        <div class="on-board-icone">
+          <el-icon size="28">
+            <QuestionFilled @click="onBoard = true" />
+          </el-icon>
+        </div> </template
+    ></s-nav-bar>
 
     <div v-if="onBoard">
-      <SSwiperOnBoard :fechar-on-board="fecharOnBoard" />
+      <SSwiperOnBoardEscolas :fechar-on-board="fecharOnBoard" />
     </div>
 
     <s-container v-if="!onBoard" class="s-home-container">
@@ -107,8 +114,15 @@ function getPrimeiroAcesso() {
           </div>
         </div>
       </s-card>
-      <s-button-menu label="Todos os eventos" @click="$router.push('/event/all')"/>
-      <s-button-menu label="Criar evento" variant="primary-green" @click="$router.push('/event')"/>
+      <s-button-menu
+        label="Todos os eventos"
+        @click="$router.push('/event/all')"
+      />
+      <s-button-menu
+        label="Criar evento"
+        variant="primary-green"
+        @click="$router.push('/event')"
+      />
     </s-container>
   </div>
 </template>
@@ -126,5 +140,16 @@ function getPrimeiroAcesso() {
 
 h5 {
   text-align: center;
+}
+
+.on-board-icone {
+  display: flex;
+  justify-content: right;
+  color: var(--grey-60);
+}
+
+.on-board-icone:hover {
+  cursor: pointer;
+  color: var(--grey-80);
 }
 </style>

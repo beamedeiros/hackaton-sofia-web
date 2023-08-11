@@ -1,18 +1,63 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import SSwiperOnBoardPais from "../../components/SSwiperOnBoardPais.vue"
+import { QuestionFilled } from '@element-plus/icons-vue'
 import imagemVazio from '../../assets/vazioTudoCerto.svg'
 const events = ref([1]);
 const nextEvents = ref([1, 2]);
 
+const onBoard = ref(false);
+
 function editEvent(event: any) {
   console.log(event);
+}
+
+onMounted(() => {
+  if (getPrimeiroAcesso() == null) {
+    onBoard.value = true;
+    setPrimeiroAcesso();
+  } else {
+    onBoard.value = false;
+  }
+});
+
+function fecharOnBoard() {
+  onBoard.value = false;
+}
+
+function setPrimeiroAcesso() {
+  try {
+    window.localStorage.setItem("app_gestao_pais", "true");
+  } catch {
+    return false;
+  }
+}
+
+function getPrimeiroAcesso() {
+  try {
+    return localStorage.getItem("app_gestao_pais");
+  } catch {
+    return false;
+  }
 }
 </script>
 <template>
   <div>
-    <s-nav-bar titulo="Gestão de eventos" />
+    <s-nav-bar titulo="Gestão de eventos" v-if="!onBoard">
+      <template #itemDireito>
+        <div class="on-board-icone">
+          <el-icon size="28">
+            <QuestionFilled @click="onBoard = true" />
+          </el-icon>
+        </div> </template
+    >
+    </s-nav-bar>
 
-    <s-container class="s-home-container">
+    <div v-if="onBoard">
+      <SSwiperOnBoardPais :fechar-on-board="fecharOnBoard" />
+    </div>
+
+    <s-container class="s-home-container" v-if="!onBoard">
       <h4>Eventos</h4>
 
       <!-- Página Vazia -->
@@ -80,5 +125,16 @@ function editEvent(event: any) {
 
 h5 {
   text-align: center;
+}
+
+.on-board-icone {
+  display: flex;
+  justify-content: right;
+  color: var(--grey-60);
+}
+
+.on-board-icone:hover {
+  cursor: pointer;
+  color: var(--grey-80);
 }
 </style>
